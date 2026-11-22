@@ -1,0 +1,15 @@
+# Playing, sampling and training. Tested with Python 3.12, diffusers 0.43, numpy 2.5 and, on the GPU, torch 2.8
+# (CUDA 12.8); on the CPU also torch 2.15. pip takes the newest torch, which wants a recent NVIDIA driver: if
+# torch.cuda.is_available() is False on a machine with a GPU, install the build for your driver (pytorch.org).
+torch>=2.4
+numpy
+diffusers>=0.32
+safetensors
+huggingface_hub
+aiohttp
+pillow
+imageio
+imageio-ffmpeg
+# Only wm/enc.py (the fast encoder) and wm/ae_tune.py (the decoder) need these:
+# torchvision
+# lpips

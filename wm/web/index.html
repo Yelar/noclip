@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>noclip</title>
+<link rel="stylesheet" href="s/style.css">
+</head>
+<body>
+<div id="stage">
+  <canvas id="gl"></canvas>
+  <div id="stamp" title="click (or O) to record this session to a file on the server"><span id="recdot">&#9654;</span> <span id="mode">PLAY</span><br><span id="clock"></span></div>
+  <div id="title"></div>
+</div>
+<div id="hud"></div>
+<div id="hint">click to look around</div>
+<div id="toast"></div>
+
+<div id="start" class="overlay">
+  <div class="card">
+    <h1>noclip</h1>
+    <p class="sub">Every frame you see is drawn by a neural network. There is no map, only what it remembers of the places it has drawn for you.</p>
+    <table>
+      <tr><td><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd></td><td>walk</td><td><kbd>N</kbd></td><td>noclip into a random level</td></tr>
+      <tr><td>mouse, arrows</td><td>look</td><td><kbd>0</kbd>&hellip;<kbd>9</kbd>, <kbd>Tab</kbd></td><td>noclip into a chosen level</td></tr>
+      <tr><td><kbd>Shift</kbd></td><td>run</td><td><kbd>R</kbd></td><td>new dream</td></tr>
+      <tr><td><kbd>E</kbd></td><td>open or close a door</td><td><kbd>P</kbd></td><td>pause</td></tr>
+      <tr><td><kbd>F</kbd></td><td>flashlight</td><td></td><td></td></tr>
+      <tr><td><kbd>V</kbd></td><td>tape look on/off</td><td><kbd>O</kbd></td><td>record to a file</td></tr>
+      <tr><td><kbd>M</kbd></td><td>sound on/off</td><td><kbd>H</kbd> <kbd>`</kbd></td><td>readout, settings</td></tr>
+    </table>
+    <button id="enter">Enter</button>
+    <p id="status" class="sub">connecting&hellip;</p>
+  </div>
+</div>
+
+<div id="menu" class="overlay hidden">
+  <div class="card">
+    <h2>Noclip into</h2>
+    <div id="levels"></div>
+    <div class="row">
+      <button id="newNothing">New dream here, from nothing</button>
+      <button id="newData">New dream from a recording</button>
+      <button id="closeMenu">Back</button>
+    </div>
+  </div>
+</div>
+
+<div id="debug" class="panel hidden">
+  <h3>Settings</h3>
+  <label>denoising steps <output id="oSteps"></output><input id="steps" type="range" min="1" max="16" step="1"></label>
+  <label>guidance towards the level <output id="oGuide"></output><input id="guide" type="range" min="1" max="3" step="0.1"></label>
+  <label>noise on remembered frames <output id="oTau"></output><input id="tau" type="range" min="0" max="0.3" step="0.01"></label>
+  <label>time shift of the steps <output id="oShift"></output><input id="shift" type="range" min="0.5" max="4" step="0.1"></label>
+  <label>how often something is near <output id="oDread"></output><input id="dread" type="range" min="0" max="1" step="0.05"></label>
+  <label class="check"><input id="exact" type="checkbox"> redo the context pass every frame (exact, slower)</label>
+  <hr>
+  <label>mouse sensitivity <output id="oSens"></output><input id="sens" type="range" min="0.0005" max="0.008" step="0.0005"></label>
+  <label class="check"><input id="invY" type="checkbox"> invert up/down</label>
+  <label class="check"><input id="invX" type="checkbox"> invert left/right</label>
+  <label class="check"><input id="blend" type="checkbox" checked> blend between frames</label>
+</div>
+
+<script src="s/app.js"></script>
+</body>
+</html>
